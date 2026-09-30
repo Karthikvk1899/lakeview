@@ -1,0 +1,9 @@
+﻿{
+  "rows": 1200000,
+  "file_bytes": 2487114181,
+  "process_rss_bytes_after_scan": 151515136,
+  "seconds_including_engine": 3.101884000003338,
+  "memory_limit": "128MB",
+  "threads": 2,
+  "layout": "Uncompressed Parquet, 120 batches, 2048-byte constant payload; column projection applies."
+}
