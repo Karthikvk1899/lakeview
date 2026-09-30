@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lakeview-cli"
+version = "0.1.0"
+description = "Local data profiling, exact semantic diffs, and streaming SQL with DuckDB"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [{name = "Karthik Beesa"}]
+keywords = ["duckdb", "parquet", "data-engineering", "diff", "cli"]
+classifiers = ["Development Status :: 4 - Beta", "Programming Language :: Python :: 3", "Typing :: Typed"]
+dependencies = ["duckdb>=1.4,<2", "pyarrow>=19,<24", "rich>=13.9,<15", "typer>=0.16,<1", "psutil>=6,<8"]
+
+[project.urls]
+Homepage = "https://github.com/Karthikvk1899/lakeview"
+Issues = "https://github.com/Karthikvk1899/lakeview/issues"
+
+[project.scripts]
+lakeview = "lakeview.cli:app"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11", "mypy>=1.15", "build>=1.2", "twine>=6", "types-psutil>=6"]
+
+[project.optional-dependencies]
+benchmark = ["pandas>=2.2,<4"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["lakeview"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["lakeview"]
+
+[[tool.mypy.overrides]]
+module = ["pyarrow", "pyarrow.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
