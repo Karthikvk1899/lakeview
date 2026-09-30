@@ -41,7 +41,8 @@ with tempfile.TemporaryDirectory(prefix="large-profile-", dir=root) as folder:
                 "seconds_including_engine": time.perf_counter() - start,
                 "memory_limit": "128MB",
                 "threads": 2,
-                "layout": "Uncompressed Parquet, 120 batches, 2048-byte constant payload; column projection applies.",
+                "layout": "Uncompressed Parquet, 120 batches, 2048-byte constant payload; "
+                "column projection applies.",
             },
             indent=2,
         )
