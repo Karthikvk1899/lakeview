@@ -1,0 +1,120 @@
+﻿{
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.15",
+  "cpu_logical": 8,
+  "rows": 1000000,
+  "file_bytes": 11594503,
+  "versions": {
+    "duckdb": "1.5.6",
+    "pyarrow": "23.0.1",
+    "pandas": "3.0.6",
+    "lakeview-cli": "0.1.2"
+  },
+  "notes": "Fresh processes; warm OS cache possible; peak RSS sampled every 10 ms. describe is not feature-equivalent to lakeview. Spark not measured.",
+  "results": {
+    "lakeview_help": {
+      "samples": [
+        {
+          "wall_ms": 392.79,
+          "peak_rss_mib": 32.98
+        },
+        {
+          "wall_ms": 368.24,
+          "peak_rss_mib": 32.96
+        },
+        {
+          "wall_ms": 368.02,
+          "peak_rss_mib": 33.05
+        },
+        {
+          "wall_ms": 349.22,
+          "peak_rss_mib": 33.09
+        },
+        {
+          "wall_ms": 362.8,
+          "peak_rss_mib": 32.95
+        }
+      ],
+      "median_ms": 368.02,
+      "median_peak_rss_mib": 32.98
+    },
+    "pandas_import": {
+      "samples": [
+        {
+          "wall_ms": 800.55,
+          "peak_rss_mib": 79.18
+        },
+        {
+          "wall_ms": 791.32,
+          "peak_rss_mib": 79.16
+        },
+        {
+          "wall_ms": 794.84,
+          "peak_rss_mib": 79.29
+        },
+        {
+          "wall_ms": 749.29,
+          "peak_rss_mib": 79.09
+        },
+        {
+          "wall_ms": 775.1,
+          "peak_rss_mib": 79.31
+        }
+      ],
+      "median_ms": 791.32,
+      "median_peak_rss_mib": 79.18
+    },
+    "lakeview_profile": {
+      "samples": [
+        {
+          "wall_ms": 1156.25,
+          "peak_rss_mib": 123.42
+        },
+        {
+          "wall_ms": 1221.21,
+          "peak_rss_mib": 123.84
+        },
+        {
+          "wall_ms": 1123.87,
+          "peak_rss_mib": 123.66
+        },
+        {
+          "wall_ms": 1128.24,
+          "peak_rss_mib": 122.09
+        },
+        {
+          "wall_ms": 1168.97,
+          "peak_rss_mib": 121.77
+        }
+      ],
+      "median_ms": 1156.25,
+      "median_peak_rss_mib": 123.42
+    },
+    "pandas_describe": {
+      "samples": [
+        {
+          "wall_ms": 1000.25,
+          "peak_rss_mib": 173.37
+        },
+        {
+          "wall_ms": 957.17,
+          "peak_rss_mib": 173.48
+        },
+        {
+          "wall_ms": 966.22,
+          "peak_rss_mib": 172.83
+        },
+        {
+          "wall_ms": 986.51,
+          "peak_rss_mib": 171.86
+        },
+        {
+          "wall_ms": 991.95,
+          "peak_rss_mib": 173.48
+        }
+      ],
+      "median_ms": 986.51,
+      "median_peak_rss_mib": 173.37
+    }
+  }
+}

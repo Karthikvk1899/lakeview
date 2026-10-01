@@ -64,17 +64,17 @@ def profile(engine: Engine, spec: str) -> dict[str, Any]:
                         f"({low!r}/{scale!r})) / "
                         f"(({high!r}/{scale!r}) - ({low!r}/{scale!r})) * 8)))"
                     )
-                for i in range(8):
-                    histograms.append(
-                        f"count(*) FILTER (WHERE isfinite({col}) AND ({bucket}) = {i})"
-                    )
+                histograms.append(
+                    f"histogram(CAST(({bucket}) AS INTEGER)) FILTER (WHERE isfinite({col}))"
+                )
                 histogram_columns.append(column)
         columns.append(column)
     if histograms:
         bins = engine.con.execute("SELECT " + ", ".join(histograms) + " FROM data").fetchone()
         assert bins is not None
         for index, column in enumerate(histogram_columns):
-            column["histogram"] = list(bins[index * 8 : index * 8 + 8])
+            counts = bins[index] or {}
+            column["histogram"] = [counts.get(bucket, 0) for bucket in range(8)]
     return {
         "file": str(path),
         "rows": count,

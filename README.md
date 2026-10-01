@@ -111,13 +111,13 @@ returns 0 even if data changed. Schema drift counts as a difference.
 
 One million rows, three columns, 11.6 MB Parquet. Windows build 26200, eight logical
 CPUs, Python 3.11.15, DuckDB 1.5.6, Arrow 23.0.1, Pandas 3.0.6.
-Medians of three fresh processes; OS file cache may be warm. Peak RSS is sampled
-every 10 ms. [Raw samples](https://github.com/Karthikvk1899/lakeview/blob/main/docs/benchmarks/windows-1m.json) and [benchmark script](https://github.com/Karthikvk1899/lakeview/blob/main/benchmarks/run.py).
+Medians of five fresh processes using lakeview 0.1.2; OS file cache may be warm. Peak RSS is sampled
+every 10 ms. [Raw samples](https://github.com/Karthikvk1899/lakeview/blob/main/docs/benchmarks/windows-1m-v0.1.2.json) and [benchmark script](https://github.com/Karthikvk1899/lakeview/blob/main/benchmarks/run.py).
 
 | Workflow | Startup probe | Full operation | Peak RSS during operation |
 | --- | ---: | ---: | ---: |
-| lakeview | 382 ms (`--help`) | 1,314 ms (`profile --format json`) | 131.5 MiB |
-| Pandas | 737 ms (`import pandas`) | 995 ms (`read_parquet`, `describe`, null counts) | 173.4 MiB |
+| lakeview | 368 ms (`--help`) | 1,156 ms (`profile --format json`) | 123.4 MiB |
+| Pandas | 791 ms (`import pandas`) | 987 ms (`read_parquet`, `describe`, null counts) | 173.4 MiB |
 | Spark | Not measured | Not measured | Not measured |
 
 These operations are not feature-equivalent: Pandas `describe` also computes distinct
@@ -131,7 +131,7 @@ CSV performs full-file type inference for consistent types, adding work. IPC str
 are converted batchwise into temporary Parquet for repeatable scans.
 
 ```sh
-uv run --extra benchmark python benchmarks/run.py --rows 1000000 --repeats 3
+uv run --extra benchmark python benchmarks/run.py --rows 1000000 --repeats 5
 ```
 
 `--memory-limit` controls DuckDB's buffer manager, not total process RSS. Arrow,
@@ -140,7 +140,7 @@ to the temporary directory; adequate disk space is required. Resource exhaustion
 reported as a CLI error, not a guarantee that every workload fits any memory limit.
 The profile's RSS is a process snapshot after scanning, not a peak measurement.
 
-A separate large-file smoke test profiled **2.49 GB of uncompressed Parquet**
+A separate v0.1.0 large-file smoke test profiled **2.49 GB of uncompressed Parquet**
 (1.2 million rows) in **3.10 seconds**, using `--memory-limit 128MB --threads 2`.
 Process RSS after scanning was 144.5 MiB. This fixture has a constant 2,048-byte
 string payload and benefits from column projection; it is not representative of
@@ -162,7 +162,7 @@ steps:
   - uses: actions/setup-python@v5
     with:
       python-version: '3.11'
-  - run: pip install lakeview-cli==0.1.1
+  - run: pip install lakeview-cli==0.1.2
   - name: Compute report
     shell: bash
     run: |
@@ -195,7 +195,7 @@ written one record batch at a time to temporary Parquet. DuckDB databases attach
 read-only. Normal exit closes resources and removes temporary files.
 
 Profiling computes finite magnitudes, aggregate statistics, then equal-width histogram
-bins in separate vectorized passes. Scaling prevents intermediate variance overflow;
+bins with one native DuckDB histogram aggregate per numeric column in separate vectorized passes. Scaling prevents intermediate variance overflow;
 statistics outside representable floating-point range render as unavailable. Diffing
 uses exact comparisons, not hash equality. Python receives summaries or query batches,
 never a whole input DataFrame.

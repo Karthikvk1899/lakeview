@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lakeview-cli"
-version = "0.1.1"
+version = "0.1.2"
 description = "Local data profiling, exact semantic diffs, and streaming SQL with DuckDB"
 readme = "README.md"
 requires-python = ">=3.11"

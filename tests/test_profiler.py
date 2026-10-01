@@ -42,3 +42,8 @@ def test_edge_distributions(engine, datasets, values):
 def test_quoted_identifier(engine, datasets):
     report = profile(engine, datasets("quoted", {'a"b': [1, 2]}))
     assert report["columns"][0]["mean"] == 1.5
+
+
+def test_histogram_sparse_bins(engine, datasets):
+    report = profile(engine, datasets("sparse", {"x": [0.0, 7.0, None]}))
+    assert report["columns"][0]["histogram"] == [1, 0, 0, 0, 0, 0, 0, 1]
