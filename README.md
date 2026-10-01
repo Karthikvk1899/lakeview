@@ -3,6 +3,7 @@
 [![CI](https://github.com/Karthikvk1899/lakeview/actions/workflows/ci.yml/badge.svg)](https://github.com/Karthikvk1899/lakeview/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
 [![Apache 2.0](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/lakeview-cli)](https://pypi.org/project/lakeview-cli/)
 
 Your dbt model ran. The row count looks fine. Something still changed.
 
@@ -35,17 +36,15 @@ The CLI renders insertions in green, deletions in red, and modifications in yell
 
 ## Install and try it
 
-Python 3.11 or newer. Install the tagged source now:
+Python 3.11 or newer. Install from PyPI:
 
 ```sh
-pip install "lakeview-cli @ git+https://github.com/Karthikvk1899/lakeview.git@v0.1.0"
+pip install lakeview-cli
 lakeview --help
 ```
 
 Or install a wheel / download a platform bundle from [Releases](https://github.com/Karthikvk1899/lakeview/releases).
-The repository includes automated PyPI publishing, but registry publication requires
-maintainer setup. `pip install lakeview-cli` is only appropriate after this project's
-package has been published there. There is no Homebrew formula yet.
+PyPI publishing uses GitHub Actions trusted publishing. There is no Homebrew formula yet.
 
 ```sh
 git clone https://github.com/Karthikvk1899/lakeview.git
@@ -155,7 +154,7 @@ steps:
   - uses: actions/setup-python@v5
     with:
       python-version: '3.11'
-  - run: pip install "lakeview-cli @ git+https://github.com/Karthikvk1899/lakeview.git@v0.1.0"
+  - run: pip install lakeview-cli==0.1.0
   - name: Compute report
     shell: bash
     run: |
