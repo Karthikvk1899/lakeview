@@ -1,8 +1,8 @@
 # lakeview — The missing CLI for local data profiling, semantic diffing, and fast SQL.
 
 [![CI](https://github.com/Karthikvk1899/lakeview/actions/workflows/ci.yml/badge.svg)](https://github.com/Karthikvk1899/lakeview/actions/workflows/ci.yml)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
-[![Apache 2.0](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](https://github.com/Karthikvk1899/lakeview/blob/main/pyproject.toml)
+[![Apache 2.0](https://img.shields.io/badge/license-Apache--2.0-green)](https://github.com/Karthikvk1899/lakeview/blob/main/LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/lakeview-cli)](https://pypi.org/project/lakeview-cli/)
 
 Your dbt model ran. The row count looks fine. Something still changed.
@@ -19,7 +19,7 @@ lakeview diff prod.parquet staging.parquet --on id
 
 **Exact row comparisons. Duplicate-aware counts. Read-only inputs. No account.**
 
-![Actual Rich terminal output from the synthetic demo](docs/demo.svg)
+![Actual Rich terminal output from the synthetic demo](https://raw.githubusercontent.com/Karthikvk1899/lakeview/main/docs/demo.svg)
 
 ```diff
 $ lakeview diff prod.parquet staging.parquet --on id
@@ -31,7 +31,7 @@ $ lakeview diff prod.parquet staging.parquet --on id
 ! revenue mean: 200.00 -> 316.67
 ```
 
-The condensed example above comes from the three-row [demo generator](examples/make_demo.py).
+The condensed example above comes from the three-row [demo generator](https://github.com/Karthikvk1899/lakeview/blob/main/examples/make_demo.py).
 The CLI renders insertions in green, deletions in red, and modifications in yellow.
 
 ## Install and try it
@@ -43,8 +43,16 @@ pip install lakeview-cli
 lakeview --help
 ```
 
-Or install a wheel / download a platform bundle from [Releases](https://github.com/Karthikvk1899/lakeview/releases).
-PyPI publishing uses GitHub Actions trusted publishing. There is no Homebrew formula yet.
+On Apple Silicon macOS or x86-64 Linux, install the standalone bundle through the
+[official Homebrew tap](https://github.com/Karthikvk1899/homebrew-lakeview):
+
+```sh
+brew install Karthikvk1899/lakeview/lakeview
+```
+
+The tap's macOS install is checked in CI. Other platforms can use PyPI, or a wheel /
+platform bundle from [Releases](https://github.com/Karthikvk1899/lakeview/releases).
+PyPI publishing uses GitHub Actions trusted publishing.
 
 ```sh
 git clone https://github.com/Karthikvk1899/lakeview.git
@@ -104,7 +112,7 @@ returns 0 even if data changed. Schema drift counts as a difference.
 One million rows, three columns, 11.6 MB Parquet. Windows build 26200, eight logical
 CPUs, Python 3.11.15, DuckDB 1.5.6, Arrow 23.0.1, Pandas 3.0.6.
 Medians of three fresh processes; OS file cache may be warm. Peak RSS is sampled
-every 10 ms. [Raw samples](docs/benchmarks/windows-1m.json) and [benchmark script](benchmarks/run.py).
+every 10 ms. [Raw samples](https://github.com/Karthikvk1899/lakeview/blob/main/docs/benchmarks/windows-1m.json) and [benchmark script](https://github.com/Karthikvk1899/lakeview/blob/main/benchmarks/run.py).
 
 | Workflow | Startup probe | Full operation | Peak RSS during operation |
 | --- | ---: | ---: | ---: |
@@ -136,7 +144,7 @@ A separate large-file smoke test profiled **2.49 GB of uncompressed Parquet**
 (1.2 million rows) in **3.10 seconds**, using `--memory-limit 128MB --threads 2`.
 Process RSS after scanning was 144.5 MiB. This fixture has a constant 2,048-byte
 string payload and benefits from column projection; it is not representative of
-all 2.49 GB files. [Raw result](docs/benchmarks/large-parquet.json).
+all 2.49 GB files. [Raw result](https://github.com/Karthikvk1899/lakeview/blob/main/docs/benchmarks/large-parquet.json).
 
 ## Put the diff in a pull request
 
@@ -154,7 +162,7 @@ steps:
   - uses: actions/setup-python@v5
     with:
       python-version: '3.11'
-  - run: pip install lakeview-cli==0.1.0
+  - run: pip install lakeview-cli==0.1.1
   - name: Compute report
     shell: bash
     run: |
@@ -192,8 +200,8 @@ statistics outside representable floating-point range render as unavailable. Dif
 uses exact comparisons, not hash equality. Python receives summaries or query batches,
 never a whole input DataFrame.
 
-See [architecture and limits](docs/architecture.md), [security](SECURITY.md), and
-[contributing](CONTRIBUTING.md). This is an initial beta release. It does not include
+See [architecture and limits](https://github.com/Karthikvk1899/lakeview/blob/main/docs/architecture.md), [security](https://github.com/Karthikvk1899/lakeview/blob/main/SECURITY.md), and
+[contributing](https://github.com/Karthikvk1899/lakeview/blob/main/CONTRIBUTING.md). This is an initial beta release. It does not include
 remote storage, fuzzy matching, row samples, or automatic key discovery.
 
 ## Help make local data work less tedious
