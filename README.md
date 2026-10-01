@@ -116,13 +116,13 @@ every 10 ms. [Raw samples](https://github.com/Karthikvk1899/lakeview/blob/main/d
 
 | Workflow | Startup probe | Full operation | Peak RSS during operation |
 | --- | ---: | ---: | ---: |
-| lakeview | 368 ms (`--help`) | 1,156 ms (`profile --format json`) | 123.4 MiB |
-| Pandas | 791 ms (`import pandas`) | 987 ms (`read_parquet`, `describe`, null counts) | 173.4 MiB |
+| lakeview | 524 ms (`--help`) | 706 ms (`profile --format json`) | 64.9 MiB |
+| Pandas | 1,083 ms (`import pandas`) | 1,388 ms (`read_parquet`, `describe`, null counts) | 174.7 MiB |
 | Spark | Not measured | Not measured | Not measured |
 
 These operations are not feature-equivalent: Pandas `describe` also computes distinct
 categorical summaries; lakeview computes histograms. Startup probes are different
-operations too. This fixture favors Pandas on elapsed time. lakeview's value is a
+operations too. Results vary with machine load and cache state. lakeview's value is a
 ready-to-use CLI, explicit diff semantics, and a spill-capable engine.
 
 **There is no universal “under 200 ms” promise.** Full statistics require scans;

@@ -11,9 +11,6 @@ from types import TracebackType
 from typing import Any
 
 import duckdb
-import pyarrow as pa
-import pyarrow.dataset as ds
-import pyarrow.ipc as ipc
 
 
 class LakeviewError(Exception):
@@ -132,6 +129,10 @@ class Engine(AbstractContextManager["Engine"]):
             delimiter = "\t" if suffix == ".tsv" else ","
             source = f"read_csv({quoted}, header=true, delim={literal(delimiter)}, sample_size=-1)"
         elif suffix in {".arrow", ".ipc", ".feather"}:
+            import pyarrow as pa
+            import pyarrow.dataset as ds
+            import pyarrow.ipc as ipc
+
             handle = pa.memory_map(str(path), "r")
             self.resources.append(handle)
             try:

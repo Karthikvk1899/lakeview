@@ -51,13 +51,19 @@ class QueryFormat(StrEnum):
 @contextmanager
 def guarded() -> Iterator[None]:
     import duckdb
-    import pyarrow as pa
 
     from lakeview.core.engine import LakeviewError
 
     try:
         yield
-    except (LakeviewError, duckdb.Error, pa.ArrowException, OSError, ValueError) as exc:
+    except (LakeviewError, duckdb.Error, OSError, ValueError) as exc:
+        errors.print(Text(f"Error: {exc}", style="red"))
+        raise typer.Exit(2) from None
+    except Exception as exc:
+        import pyarrow as pa
+
+        if not isinstance(exc, pa.ArrowException):
+            raise
         errors.print(Text(f"Error: {exc}", style="red"))
         raise typer.Exit(2) from None
 

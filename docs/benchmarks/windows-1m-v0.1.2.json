@@ -15,106 +15,106 @@
     "lakeview_help": {
       "samples": [
         {
-          "wall_ms": 392.79,
-          "peak_rss_mib": 32.98
+          "wall_ms": 783.76,
+          "peak_rss_mib": 33.17
         },
         {
-          "wall_ms": 368.24,
-          "peak_rss_mib": 32.96
+          "wall_ms": 575.42,
+          "peak_rss_mib": 33.21
         },
         {
-          "wall_ms": 368.02,
-          "peak_rss_mib": 33.05
+          "wall_ms": 497.09,
+          "peak_rss_mib": 33.03
         },
         {
-          "wall_ms": 349.22,
-          "peak_rss_mib": 33.09
+          "wall_ms": 480.49,
+          "peak_rss_mib": 33.01
         },
         {
-          "wall_ms": 362.8,
-          "peak_rss_mib": 32.95
+          "wall_ms": 524.04,
+          "peak_rss_mib": 33.34
         }
       ],
-      "median_ms": 368.02,
-      "median_peak_rss_mib": 32.98
+      "median_ms": 524.04,
+      "median_peak_rss_mib": 33.17
     },
     "pandas_import": {
       "samples": [
         {
-          "wall_ms": 800.55,
-          "peak_rss_mib": 79.18
+          "wall_ms": 1628.61,
+          "peak_rss_mib": 79.37
         },
         {
-          "wall_ms": 791.32,
-          "peak_rss_mib": 79.16
+          "wall_ms": 1024.39,
+          "peak_rss_mib": 78.92
         },
         {
-          "wall_ms": 794.84,
-          "peak_rss_mib": 79.29
+          "wall_ms": 1082.83,
+          "peak_rss_mib": 79.21
         },
         {
-          "wall_ms": 749.29,
-          "peak_rss_mib": 79.09
+          "wall_ms": 1026.77,
+          "peak_rss_mib": 79.15
         },
         {
-          "wall_ms": 775.1,
-          "peak_rss_mib": 79.31
+          "wall_ms": 1097.87,
+          "peak_rss_mib": 79.21
         }
       ],
-      "median_ms": 791.32,
-      "median_peak_rss_mib": 79.18
+      "median_ms": 1082.83,
+      "median_peak_rss_mib": 79.21
     },
     "lakeview_profile": {
       "samples": [
         {
-          "wall_ms": 1156.25,
-          "peak_rss_mib": 123.42
+          "wall_ms": 852.93,
+          "peak_rss_mib": 66.07
         },
         {
-          "wall_ms": 1221.21,
-          "peak_rss_mib": 123.84
+          "wall_ms": 705.73,
+          "peak_rss_mib": 65.83
         },
         {
-          "wall_ms": 1123.87,
-          "peak_rss_mib": 123.66
+          "wall_ms": 714.84,
+          "peak_rss_mib": 64.91
         },
         {
-          "wall_ms": 1128.24,
-          "peak_rss_mib": 122.09
+          "wall_ms": 621.63,
+          "peak_rss_mib": 64.34
         },
         {
-          "wall_ms": 1168.97,
-          "peak_rss_mib": 121.77
+          "wall_ms": 677.67,
+          "peak_rss_mib": 64.49
         }
       ],
-      "median_ms": 1156.25,
-      "median_peak_rss_mib": 123.42
+      "median_ms": 705.73,
+      "median_peak_rss_mib": 64.91
     },
     "pandas_describe": {
       "samples": [
         {
-          "wall_ms": 1000.25,
-          "peak_rss_mib": 173.37
+          "wall_ms": 1461.23,
+          "peak_rss_mib": 172.06
         },
         {
-          "wall_ms": 957.17,
-          "peak_rss_mib": 173.48
+          "wall_ms": 1388.34,
+          "peak_rss_mib": 181.62
         },
         {
-          "wall_ms": 966.22,
-          "peak_rss_mib": 172.83
+          "wall_ms": 1324.41,
+          "peak_rss_mib": 178.4
         },
         {
-          "wall_ms": 986.51,
-          "peak_rss_mib": 171.86
+          "wall_ms": 1389.82,
+          "peak_rss_mib": 174.05
         },
         {
-          "wall_ms": 991.95,
-          "peak_rss_mib": 173.48
+          "wall_ms": 1290.29,
+          "peak_rss_mib": 174.68
         }
       ],
-      "median_ms": 986.51,
-      "median_peak_rss_mib": 173.37
+      "median_ms": 1388.34,
+      "median_peak_rss_mib": 174.68
     }
   }
 }
